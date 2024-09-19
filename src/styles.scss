@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+    margin-top: 5%;
+
+    .title {
+        padding: 3px 15px;
+        width: max-content;
+        margin: auto;
+
+        &.title-h1 {
+            background-color: #04818B;
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        &.title-h2 {
+            border: 2px solid #04818B;
+            color: grey;
+            margin: 15px;
+
+            @media (max-width: 1200px) {
+                flex: 1 1 auto;
+            }
+
+            .number {
+                color: black;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .titles-flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

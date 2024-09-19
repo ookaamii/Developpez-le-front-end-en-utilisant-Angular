@@ -1,3 +1,49 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<div class="container">
+    <div class="text-center" *ngIf="loadingOlympics">
+        <div class="spinner-border"></div>
+    </div>
+
+    <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf="!loadingOlympics">
+        <div class="rounded text-white title title-h1">
+            Medals per Country
+        </div>
+
+        <div class="text-center titles-flex">
+            <div class="rounded title title-h2">
+                Number of JOs
+                <br />
+                <span class="number">
+                    {{ totalJOs }}
+                </span>
+            </div>
+            <div class="rounded title title-h2">
+                Number of countries
+                <br />
+                <span class="number">
+                    {{ (olympics$ | async)?.length }}
+                </span>
+            </div>
+        </div>
+
+        <div class="d-flex align-content-around justify-content-center chart-container">
+            <ngx-charts-pie-chart (window:resize)="onResize()" [results]="pieChartData" [view]="view" [scheme]="colorScheme" [gradient]="gradient"
+                [legend]="showLegend" [trimLabels]="trimLabels" [labels]="showLabels" [doughnut]="isDoughnut"
+                (select)="onSelect($event)">
+                <ng-template #tooltipTemplate let-model="model">
+                    <div ngx-tooltip>
+                        <p>
+                            {{ model.name }}
+                        </p>
+                        <p>
+                            <img [src]="imageUrl" class="img-medal"> {{ model.value }}
+                        </p>
+                    </div>
+                </ng-template>
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+</div>
