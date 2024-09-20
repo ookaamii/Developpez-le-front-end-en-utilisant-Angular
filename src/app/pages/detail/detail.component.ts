@@ -75,15 +75,14 @@ export class DetailComponent {
             this.loadingOlympic = false;
           },
           error: err => {
-            // Gérer l'erreur en affichant un message à l'utilisateur et en console
-            console.error('Error:', err.message);
+            // Gérer l'erreur en affichant un message à l'utilisateur
             this.loadingOlympic = false;
             this.errorMessage = err.message;
           }
         });
       },
       error: err => {
-        console.error('Error loading Olympic data:', err);
+        //console.error('Error loading Olympic data:', err);
       }
     });
   }
