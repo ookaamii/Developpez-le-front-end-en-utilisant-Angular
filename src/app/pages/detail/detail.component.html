@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="text-center" *ngIf="loadingOlympic">
+        <div class="spinner-border"></div>
+    </div>
+
+    <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf="olympicCountry$ | async as olympic">
+        <div class="container">
+            <div class="rounded text-white title title-h1">
+                {{ olympic.country }}
+            </div>
+
+            <div class="text-center titles-flex">
+                <div class="rounded title title-h2">
+                    Number of entries
+                    <br />
+                    <span class="number">
+                        {{ olympic.participations.length }}
+                    </span>
+                </div>
+                <div class="rounded title title-h2">
+                    Total number medals
+                    <br />
+                    <span class="number">
+                        {{ getTotalMedals(olympic.participations) }}
+                    </span>
+                </div>
+                <div class="rounded title title-h2">
+                    Total number of athletes
+                    <br />
+                    <span class="number">
+                        {{ getTotalAthletes(olympic.participations) }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center chart-container">
+                <ngx-charts-line-chart (window:resize)="onResize()" [view]="view" [scheme]="colorScheme"
+                    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis"
+                    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi">
+                </ngx-charts-line-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-link-back">
+        <a routerLink="/" class="btn text-white link-back">
+            << Go Back </a>
+    </div>
+</div>
