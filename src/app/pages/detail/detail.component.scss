@@ -1,0 +1,16 @@
+.container {
+    .block-link-back {
+        width: 60%;
+        margin: auto;
+        text-align: right;
+
+        @media (max-width: 1200px) {
+            width: 100%;
+        }
+
+        .link-back {
+            background-color: #04818B;
+            text-transform: lowercase;
+        }
+    }
+}
