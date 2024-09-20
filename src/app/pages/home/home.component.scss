@@ -1,0 +1,30 @@
+.chart-container {
+    display: flex;
+    overflow: hidden;
+    flex: 1 1 auto;
+
+}
+
+::ng-deep .pie-label {
+    font-size: 20px !important;
+
+    @media (max-width: 576px) {
+        font-size: 15px !important;
+    }
+}
+
+::ng-deep .ngx-charts-tooltip-content.type-tooltip {
+    // modifie la couleur du tooltip
+    background-color: #04818B !important;
+    color: white !important;
+
+    .tooltip-caret.position-top {
+        //la couleur du triangle sur le tooltip
+        color: white !important;
+        border-top: 7px solid #04818B !important;
+    }
+
+    img.img-medal {
+        width: 20px;
+    }
+}

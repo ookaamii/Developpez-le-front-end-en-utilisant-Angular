@@ -1,21 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: '**', // wildcard
-    component: NotFoundComponent,
-  },
-];
+import { RouterModule } from '@angular/router';
+import routeConfig from './app.routes';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routeConfig)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
