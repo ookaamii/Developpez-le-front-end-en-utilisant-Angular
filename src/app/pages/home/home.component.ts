@@ -61,8 +61,7 @@ export class HomeComponent implements OnInit {
         this.loadingOlympics = false;
       },
       error: err => {
-        // Gérer l'erreur en affichant un message à l'utilisateur et en console
-        console.error('Error:', err.message);
+        // Gérer l'erreur en affichant un message à l'utilisateur
         this.loadingOlympics = false;
         this.errorMessage = err.message;
       }
