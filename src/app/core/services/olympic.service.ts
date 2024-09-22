@@ -20,8 +20,6 @@ export class OlympicService {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
       catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
         // can be useful to end loading state and let the user know something went wrong
         this.olympics$.next([]);
         return caught;
@@ -44,7 +42,6 @@ export class OlympicService {
       }),
       // Gère l'erreur
       catchError(error => {
-        console.error('Error fetching Olympic data:', error);
         return throwError(() => new Error(`Unable to fetch Olympic data for the country : ${country}`));
       })
     );
