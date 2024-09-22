@@ -42,7 +42,6 @@ export class OlympicService {
       }),
       // Gère l'erreur
       catchError(error => {
-        console.error('Error fetching Olympic data:', error);
         return throwError(() => new Error(`Unable to fetch Olympic data for the country : ${country}`));
       })
     );
